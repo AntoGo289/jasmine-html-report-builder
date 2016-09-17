@@ -6,16 +6,18 @@
   "author": "Basavana Gowda <basavanagowda.ksb@gmail.com>",
   "license": "ISC",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/basavanag/jasmine-xml2html-converter"
+    "type": "git",
+    "url": "https://github.com/basavanag/jasmine-xml2html-converter"
   },
   "keywords": [
-  "jasmine report",
-  "junit report",
-  "protractor",
-  "html report"
+    "jasmine report",
+    "junit report",
+    "protractor",
+    "html report"
   ],
   "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
     "xmldoc": "~0.3.0"
   }
 }

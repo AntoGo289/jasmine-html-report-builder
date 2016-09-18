@@ -1,13 +1,13 @@
 {
   "name": "jasmine-xml2html-converter",
   "version": "0.0.2",
-  "description": "A node module to convert jasmine xml reports to html",
+  "description": "A node module to convert jasmine xml reports to html - providing flexible setup options",
   "main": "index.js",
-  "author": "Basavana Gowda <basavanagowda.ksb@gmail.com>",
+  "author": "Basavana Gowda <basavanagowda.ksb@gmail.com>, Anthony O'Gorman <antogo289@gmail.com>",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/basavanag/jasmine-xml2html-converter"
+    "url": "https://github.com/AntoGo289/jasmine-xml2html-converter"
   },
   "keywords": [
     "jasmine report",
@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "fs": "0.0.1-security",
+    "fs-extra": "^0.30.0",
+    "moment": "^2.15.0",
     "path": "^0.12.7",
     "xmldoc": "~0.3.0"
   }

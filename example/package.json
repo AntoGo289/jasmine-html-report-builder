@@ -1,0 +1,13 @@
+{
+  "name": "Example-Use",
+  "version": "0.0.1",
+  "description": "An example use of modified jasmine-xml2html-converter",
+  "author": "Anthony O'Gorman <antogo289@gmail.com>",
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "grunt": "^1.0.1",
+    "load-grunt-tasks": "^3.5.2",
+    "moment": "^2.15.0",
+    "path": "^0.12.7"
+  }
+}

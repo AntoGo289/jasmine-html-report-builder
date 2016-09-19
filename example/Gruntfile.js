@@ -53,7 +53,7 @@ module.exports = function(grunt) {
                 screenshotsDir: screenshotsDirs[2],
                 //userDefinedDirs: null
             }]
-        }
+        };
 
         // Generate report with this config
         new HTMLReport().from(config);

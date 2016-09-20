@@ -21,98 +21,125 @@ How to use
 ----------------------------------
 * Creating the html report
 
-  			var HTMLReport = require('jasmine-xml2html-converter');
-        var fs = require('fs');
-        var fse = require('fs-extra');
-        var path = require('path');
-        var moment = require('moment');
+      var HTMLReport = require('jasmine-xml2html-converter');
+      var fs = require('fs');
+      var fse = require('fs-extra');
+      var path = require('path');
+      var moment = require('moment');
 
-        // Used to get todays date and time nicely formatted.
-        function getDateString() {
-            return moment().format('DD/MM/YYYY HH:mm');
-        }
-
-        // Use this (or an altered version of this) to generate file path array for each browser being added to the report
-        function createFilePaths(target) {
-            if (!fs.existsSync(target)) {
-                console.log('Target junit directory does not exist: ' + __dirname + '/' + target);
-                return [];
-            }
-            var files = fs.readdirSync(target);
-            var filePaths = [];
-            for (var i = 0; i < files.length; i++) {
-                //var filePath = path.join(__dirname, '/', target, '/', files[i]); // Used to specify just files in dir
-                var filePath = path.join(target, '/', files[i]);
-                filePaths.push(filePath);
-            }
-            return filePaths;
-        }
-
-    		// Create config for report
-    		var config = {
-            overviewTitle: 'Overview - Test Results - ' + getDateString(),
-            baseOutputPath: path.join(__dirname, '/results'),
-            overviewScreenshotsDir: 'Path/To/Screenshots/Directory/For/Overview',
-            includeSpecsInOverview: true, // Sets whether or not to include all spec report tables in overview page
-            //userDefinedDirs: null, // Not needed yet
-            browsersConfig: [{
-                reportTitle: 'Chrome - ' + getDateString(),
-                browserName: 'Chrome-v53.0', // Used for folders etc (This can be as specific as required)
-                specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from chrome/other folder
-                screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
-                //userDefinedDirs: null // Not needed yet
-            }, {
-                reportTitle: 'Safari - ' + getDateString(),
-                browserName: 'Safari-v9.1', // Used for folders etc (This can be as specific as required)
-                specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from safari/other folder
-                screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
-                //userDefinedDirs: null // Not needed yet
-            }] // Note that you can add as many browsers as required here
-        };
-        
-        // Generate the report 
-    		new HTMLReport().from(config);
-
-##################################################################################
-## TODO : Check that this works with protractor conf.js
-##################################################################################
-
-* Using with protractor conf.js file
-
-        // A callback function called once tests are finished.
-        onComplete: function() {
-          var path = require("path");
-          var browserName, browserVersion;
-          var reportPath = path.join(__dirname, '..', '/test_out/e2e/');
-          var capsPromise = browser.getCapabilities();
-          capsPromise.then(function (caps) {
-          browserName = caps.caps_.browserName.toLowerCase();
-          browserName = browserName.replace(/ /g,"-");
-          browserVersion = caps.caps_.version;
-          return null;
-        });
-        
-        var HTMLReport = require('jasmine-xml2html-converter');
-        reportPath += browserName;
-
-        // Call custom report for html output
-        testConfig = {
-          reportTitle: 'Test Execution Report',
-          outputPath: reportPath,
-          seleniumServer: browser.seleniumAddress,
-          applicationUrl: browser.baseUrl,
-          testBrowser: browserName + ' ' + browserVersion
-        };
-        new HTMLReport().from(reportPath + '/junitresults.xml', testConfig);
+      // Used to get todays date and time nicely formatted.
+      function getDateString() {
+          return moment().format('DD/MM/YYYY HH:mm');
       }
+
+      // Use this (or an altered version of this) to generate file path array for each browser being added to the report
+      function createFilePaths(target) {
+          if (!fs.existsSync(target)) {
+              console.log('Target junit directory does not exist: ' + __dirname + '/' + target);
+              return [];
+          }
+          var files = fs.readdirSync(target);
+          var filePaths = [];
+          for (var i = 0; i < files.length; i++) {
+              //var filePath = path.join(__dirname, '/', target, '/', files[i]); // Used to specify just files in dir
+              var filePath = path.join(target, '/', files[i]);
+              filePaths.push(filePath);
+          }
+          return filePaths;
+      }
+
+      // Create config for report
+      var config = {
+          overviewTitle: 'Overview - Test Results - ' + getDateString(),
+          baseOutputPath: path.join(__dirname, '/results'),
+          overviewScreenshotsDir: 'Path/To/Screenshots/Directory/For/Overview',
+          includeSpecsInOverview: true, // Sets whether or not to include all spec report tables in overview page
+          addSummaryDetails: [{
+            tag: 'Testing Application: ',
+            value: 'Super Awesome App'
+          },
+          {
+            tag: 'Test Generated By:',
+            value: 'Tim Timmington'
+          }], // Adds info defined here to the summary for the overview page
+          //userDefinedDirs: null, // Not needed yet
+          browsersConfig: [{
+              reportTitle: 'Chrome - ' + getDateString(),
+              browserName: 'Chrome-v53.0', // Used for folders etc (This can be as specific as required)
+              specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from chrome/other folder
+              screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
+              addSummaryDetails: [{
+                tag: 'Testing Application: ',
+                value: 'Super Awesome App'
+              },
+              {
+                tag: 'Test Generated By:',
+                value: 'Tim Timmington'
+              }], // Adds info defined here to the summary for the browser page
+              //userDefinedDirs: null // Not needed yet
+          }, {
+              reportTitle: 'Safari - ' + getDateString(),
+              browserName: 'Safari-v9.1', // Used for folders etc (This can be as specific as required)
+              specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from safari/other folder
+              screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
+              addSummaryDetails: [{
+                tag: 'Testing Application: ',
+                value: 'Super Awesome App'
+              },
+              {
+                tag: 'Test Generated By:',
+                value: 'Tim Timmington'
+              }], // Adds info defined here to the summary for the browser page
+              //userDefinedDirs: null // Not needed yet
+          }] // Note that you can add as many browsers as required here
+      };
+      
+      // Generate the report 
+      new HTMLReport().from(config);
 
 Test config object
 ----------------------------------
-* Defaults : testConfig = {} 
-* To override reportTitle & outputPath of the output html file : testConfig = { reportTitle: 'Test Execution Report', outputPath: './test-out' }
-* To add data to the report summary of the output html file: testConfig = { Browser: IE }
-
-Sample html report
-----------------------------------
-![Alt text](https://raw.githubusercontent.com/AntoGo289/jasmine-xml2html-converter/master/sample_test_report.png?raw=true)
-
+  var config = {
+      overviewTitle: 'Overview - Test Results - ' + getDateString(),
+      baseOutputPath: path.join(__dirname, '/results'),
+      overviewScreenshotsDir: 'Path/To/Screenshots/Directory/For/Overview',
+      includeSpecsInOverview: true, // Sets whether or not to include all spec report tables in overview page
+      addSummaryDetails: [{ // Adds info defined here to the summary for the overview page
+        tag: 'Testing Application: ',
+        value: 'Super Awesome App'
+      },
+      {
+        tag: 'Test Generated By:',
+        value: 'Tim Timmington'
+      }], 
+      //userDefinedDirs: null, // Not needed yet
+      browsersConfig: [{
+          reportTitle: 'Chrome - ' + getDateString(),
+          browserName: 'Chrome-v53.0', // Used for folders etc (This can be as specific as required)
+          specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from chrome/other folder
+          screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
+          addSummaryDetails: [{ // Adds info defined here to the summary for the browser page
+            tag: 'Testing Application: ',
+            value: 'Super Awesome App'
+          },
+          {
+            tag: 'Test Generated By:',
+            value: 'Tim Timmington'
+          }],
+          //userDefinedDirs: null // Not needed yet
+      }, {
+          reportTitle: 'Safari - ' + getDateString(),
+          browserName: 'Safari-v9.1', // Used for folders etc (This can be as specific as required)
+          specFiles: createFilePaths('Path/To/JUnit/Files/Directory'), // Send array of absolute paths to files from safari/other folder
+          screenshotsDir: 'Path/To/Screenshots/Directory/For/This/Browser',
+          addSummaryDetails: [{ // Adds info defined here to the summary for the browser page
+            tag: 'Testing Application: ',
+            value: 'Super Awesome App'
+          },
+          {
+            tag: 'Test Generated By:',
+            value: 'Tim Timmington'
+          }], 
+          //userDefinedDirs: null // Not needed yet
+      }] // Note that you can add as many browsers as required here
+  };

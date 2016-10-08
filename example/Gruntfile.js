@@ -1,6 +1,6 @@
 'use strict';
 
-var HTMLReport = require('../lib/jasmine-xml2html-converter');
+var HTMLReport = require('../lib/jasmine-html-report-builder');
 var fs = require('fs');
 var fse = require('fs-extra');
 var path = require('path');

@@ -1,7 +1,7 @@
 {
     "name": "Example-Use",
     "version": "0.0.1",
-    "description": "An example use of modified jasmine-xml2html-converter",
+    "description": "An example use of jasmine-html-report-builder",
     "author": "Anthony O'Gorman <antogo289@gmail.com>",
     "dependencies": {
         "fs-extra": "^0.30.0",

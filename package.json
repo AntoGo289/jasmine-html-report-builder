@@ -1,25 +1,26 @@
 {
-  "name": "jasmine-xml2html-converter",
-  "version": "0.0.2",
-  "description": "A node module to convert jasmine xml reports to html - providing flexible setup options",
-  "main": "index.js",
-  "author": "Basavana Gowda <basavanagowda.ksb@gmail.com>, Anthony O'Gorman <antogo289@gmail.com>",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AntoGo289/jasmine-xml2html-converter"
-  },
-  "keywords": [
-    "jasmine report",
-    "junit report",
-    "protractor",
-    "html report"
-  ],
-  "dependencies": {
-    "fs": "0.0.1-security",
-    "fs-extra": "^0.30.0",
-    "moment": "^2.15.0",
-    "path": "^0.12.7",
-    "xmldoc": "~0.3.0"
-  }
+    "name": "jasmine-xml2html-converter",
+    "version": "0.0.2",
+    "description": "A node module to create a structured html report from multiple collections of jasmine xml result files - providing flexible setup options",
+    "main": "index.js",
+    "author": "Anthony O'Gorman <antogo289@gmail.com>",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AntoGo289/jasmine-html-report-builder"
+    },
+    "keywords": [
+        "jasmine report",
+        "junit report",
+        "protractor",
+        "html report",
+        "report builder",
+        "html report"
+    ],
+    "dependencies": {
+        "fs-extra": "^0.30.0",
+        "moment": "^2.15.0",
+        "path": "^0.12.7",
+        "xmldoc": "~0.3.0"
+    }
 }

@@ -16,7 +16,6 @@
     "html report"
   ],
   "dependencies": {
-    "fs": "0.0.1-security",
     "fs-extra": "^0.30.0",
     "moment": "^2.15.0",
     "path": "^0.12.7",

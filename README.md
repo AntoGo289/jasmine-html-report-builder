@@ -1,4 +1,4 @@
-jasmine-xml2html-converter
+jasmine-html-report-builder
 =================================
 
 A node module to convert jasmine/junit generated xml reports into formatted html reports. A structured report including an overview page

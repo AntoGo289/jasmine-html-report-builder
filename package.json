@@ -1,6 +1,6 @@
 {
     "name": "jasmine-html-report-builder",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A node module to create a structured html report from multiple collections of jasmine xml result files - providing flexible setup options",
     "main": "index.js",
     "author": "Anthony O'Gorman <antogo289@gmail.com>",

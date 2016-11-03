@@ -20,7 +20,7 @@ repo : https://github.com/AntoGo289/jasmine-xml2html-converter
 How to use
 ----------------------------------
 * Creating the html report
-
+````Javascript
       var HTMLReport = require('jasmine-xml2html-converter');
       var fs = require('fs');
       var fse = require('fs-extra');
@@ -103,9 +103,10 @@ How to use
       
       // Generate the report 
       new HTMLReport().from(config);
-
+````
 Test config object
 ----------------------------------
+````Javascript
   var config = {
       overviewTitle: 'Overview - Test Results - ' + getDateString(),
       baseOutputPath: path.join(__dirname, '/results'),
@@ -150,3 +151,4 @@ Test config object
           //userDefinedDirs: null // Not needed yet
       }] // Note that you can add as many browsers as required here
   };
+  ````

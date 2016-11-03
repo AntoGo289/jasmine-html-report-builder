@@ -7,13 +7,15 @@ each page. If the user includes screenshot directories for the Overview page and
 'Failed Test Screenshots' is added to the respective pages. The user can also choose whether or not to include all generated spec reports
 on the overview page. 
 
-The ooverview page contains a summary chart of each set of tests added to the report - i.e. one bar per browser report. This illustrates
+The overview page contains a summary chart of each set of tests added to the report - i.e. one bar per browser report. This illustrates
 an overview of the tests run, passed, failed or skipped for each browser. A summary table to the left hand side of the chart depicts the
 date the reprt was generated, the total number of tests run, pass rate and total amount of execution time. 
 
 Each browser page contains a similar layout to the overview page. Each specs describe block adds its own report bar to the bar chart and
-the test starting time is in place of where the 'Report Created' attribute would be on the overview page. All test resutls are added in
+the test starting time is in place of where the 'Report Created' attribute would be on the overview page. All test results are added in
 a table (or set of tables) below the select button (and Failed Test Screenshots button).
+
+The config allows the user to add custom buttons/links to user specified content - the content can also be copied into the report directly through the config for each page or simply create a link to where the content will be placed at a later time. 
 
 repo : https://github.com/AntoGo289/jasmine-xml2html-converter
 

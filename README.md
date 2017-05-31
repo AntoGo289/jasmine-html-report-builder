@@ -2,25 +2,27 @@ jasmine-html-report-builder
 =================================
 
 A node module to convert jasmine/junit generated xml reports into formatted html reports. A structured report including an overview page
-and an individual browser report page is generated. A navigation select button is generated to allow quick and easy navigation between
+and an individual browser report page (per specified browser) will be generated. A navigation select button is generated to allow quick and easy navigation between
 each page. If the user includes screenshot directories for the Overview page and/or one or more of the browser reports then a button - 
 'Failed Test Screenshots' is added to the respective pages. The user can also choose whether or not to include all generated spec reports
 on the overview page. 
 
-The ooverview page contains a summary chart of each set of tests added to the report - i.e. one bar per browser report. This illustrates
+The overview page contains a summary chart of each set of tests added to the report - i.e. one bar per browser report. This illustrates
 an overview of the tests run, passed, failed or skipped for each browser. A summary table to the left hand side of the chart depicts the
-date the reprt was generated, the total number of tests run, pass rate and total amount of execution time. 
+date the report was generated, the total number of tests run, pass rate and total amount of execution time. 
 
 Each browser page contains a similar layout to the overview page. Each specs describe block adds its own report bar to the bar chart and
-the test starting time is in place of where the 'Report Created' attribute would be on the overview page. All test resutls are added in
-a table (or set of tables) below the select button (and Failed Test Screenshots button).
+the test starting time is in place of where the 'Report Created' attribute would be on the overview page. All test results are added in
+a table (or set of tables) below the report button/link bar.
+
+The config allows the user to add custom buttons/links to user specified content on a per page basis - the content can also be copied into the report directly through the config for each page or simply create a link to where the content will be placed at a later time (by some other user defined process). 
 
 repo : https://github.com/AntoGo289/jasmine-xml2html-converter
 
-How to use
+How to Use
 ----------------------------------
 * Creating the html report
-
+````Javascript
       var HTMLReport = require('jasmine-xml2html-converter');
       var fs = require('fs');
       var fse = require('fs-extra');
@@ -103,9 +105,10 @@ How to use
       
       // Generate the report 
       new HTMLReport().from(config);
-
-Test config object
+````
+Test Config Object
 ----------------------------------
+````Javascript
   var config = {
       overviewTitle: 'Overview - Test Results - ' + getDateString(),
       baseOutputPath: path.join(__dirname, '/results'),
@@ -150,3 +153,4 @@ Test config object
           //userDefinedDirs: null // Not needed yet
       }] // Note that you can add as many browsers as required here
   };
+  ````
